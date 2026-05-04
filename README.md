@@ -1,4 +1,4 @@
-## 🩺 Breast Cancer Predcition System
+## 🩺 Breast Cancer Prediction System
 
 A Machine Learning based web application that predicts whether a tumor is **Malignant (Cancerous)** or **Benign (Non-Cancerous)** using clinical features from the Breast Cancer dataset from Kaggle.
 Built using **Scikit-learn, FastAPI and Bootstrap**, this project demonstrates with an interactive web interface.
