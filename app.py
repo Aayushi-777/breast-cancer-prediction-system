@@ -90,7 +90,10 @@ def predict(
         "symmetry_worst": symmetry_worst, 
         "fractal_dimension_worst": fractal_dimension_worst
     }])
-
+    output_pred=model.predict(input_data)
+    print(output_pred)
+    output_prob=model.predict_proba(input_data)
+    print(output_prob)
     prediction = model.predict(input_data)[0]
     probability = model.predict_proba(input_data)[0][1]
 
