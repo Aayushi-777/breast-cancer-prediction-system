@@ -27,7 +27,6 @@ def home(request: Request):
 #Prediction route (from form)
 @app.post("/predict")
 def predict(
-    request: Request,
     radius_mean: float = Form(...),  # (...) means the field is required and cannot be skipped.
     texture_mean: float = Form(...),
     perimeter_mean: float = Form(...),
