@@ -5,7 +5,8 @@ from sklearn.metrics import classification_report
 
 #Load dataset
 df = pd.read_csv("data.csv")
-df = df.drop(columns=["id", "Unnamed: 32"])
+df.columns=df.columns.str.replace(" ", "_")
+df = df.drop(columns=["id", "Unnamed:_32"], errors="ignore")
 df["diagnosis"] = df["diagnosis"].map({"M": 1, "B": 0})
 X = df.drop(columns=["diagnosis"])
 Y = df["diagnosis"]
