@@ -6,7 +6,7 @@ import joblib
 import pandas as pd
 from fastapi.staticfiles import StaticFiles
 
-app = FastAPI()
+app = FastAPI() # FastAPI application object
 app.mount("/static", StaticFiles(directory="static"), name="static")
 templates = Jinja2Templates(directory="templates")
 model = joblib.load("model.pkl")
@@ -16,17 +16,19 @@ model = joblib.load("model.pkl")
 def home(request: Request):
     result = request.query_params.get("result")
     probability = request.query_params.get("prob")
-    return templates.TemplateResponse("index.html", {
-        "request":request,
+    return templates.TemplateResponse(
+        request=request,
+        name="index.html",
+        context={
         "result": result,
         "probability": probability
-        })
+    })
 
 #Prediction route (from form)
 @app.post("/predict")
 def predict(
     request: Request,
-    radius_mean: float = Form(...),
+    radius_mean: float = Form(...),  # (...) means the field is required and cannot be skipped.
     texture_mean: float = Form(...),
     perimeter_mean: float = Form(...),
     area_mean: float = Form(...),
